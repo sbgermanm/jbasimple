@@ -9,9 +9,9 @@
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-</beans>
 
-<jdbc:embedded-database type="HSQL" id="miBaseDePatos"/>
+
+<jdbc:embedded-database type="HSQL" id="miBaseDePatos" />
            
 <context:component-scan base-package="com.sebas.jbasample">
     <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
@@ -19,7 +19,7 @@
     
 <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="miEntityManager">
     <property name="packagesToScan" value="com.sebas.jbasample.Entity"/>
-    <property name="dataSource" ref="miEntityManager"/>
+    <property name="dataSource" ref="miBaseDePatos"/>
     <property name="persistenceProvider">
         <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
     </property>
@@ -28,6 +28,7 @@
             <prop key="hibernate.show_sql">true</prop>
             <prop key="hibernate.hbm2ddl.auto">create</prop>
         </props>
+    </property>
 </bean>
     
 <tx:annotation-driven transaction-manager="transactionManager"/>
