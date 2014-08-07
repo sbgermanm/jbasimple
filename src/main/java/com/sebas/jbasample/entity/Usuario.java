@@ -37,6 +37,12 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<Blog> blogs;
 
+    public Usuario(String name, List<Role> roles) {
+        this.name = name;
+        this.roles = roles;
+    }
+
+    
     public Integer getId() {
         return id;
     }
