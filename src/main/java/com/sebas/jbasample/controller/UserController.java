@@ -10,6 +10,7 @@ import com.sebas.jbasample.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -27,4 +28,12 @@ public class UserController {
         modelo.addAttribute("listaDeUsuarios", userService.findAll());
         return "listadoUsuarioTilesDefinition";
     }
+    
+    @RequestMapping("/users/{id}")
+    public String userDetail(Model modelo, @PathVariable int id){
+        modelo.addAttribute("user", userService.findOne(id));
+        return "detalleUsuarioTilesDefinition";
+    }
+
+    
 }

@@ -13,6 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Sebasy
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
-    
+  
     
 }
