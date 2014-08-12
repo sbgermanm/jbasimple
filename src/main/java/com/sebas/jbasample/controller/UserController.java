@@ -31,7 +31,7 @@ public class UserController {
     
     @RequestMapping("/users/{id}")
     public String userDetail(Model modelo, @PathVariable int id){
-        modelo.addAttribute("usuario", userService.findOne(id));
+        modelo.addAttribute("usuario", userService.findOneWithBlogsAndItems(id));
         return "detalleUsuarioTilesDefinition";
     }
 
