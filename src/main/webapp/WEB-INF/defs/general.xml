@@ -21,9 +21,14 @@
         <put-attribute name="body" value="/WEB-INF/jsp/detalleUsuario.jsp" />
         <put-attribute name="current" value="listadoUsuarios" />
     </definition>
-    <definition name="user-register" extends="common">
+    <definition name="user-registerTilesDefinition" extends="common">
         <put-attribute name="title" value="Registro usuario" />
         <put-attribute name="body" value="/WEB-INF/jsp/registroUsuario.jsp" />
         <put-attribute name="current" value="register" />
+    </definition>
+    <definition name="loginTilesDefinition" extends="common">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="body" value="/WEB-INF/jsp/loginUsuario.jsp" />
+        <put-attribute name="current" value="login" />
     </definition>
 </tiles-definitions>

@@ -45,13 +45,13 @@ public class UserController {
 
     @RequestMapping("/register")
     public String showRegister() {
-        return "user-register";
+        return "user-registerTilesDefinition";
     }
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String doRegister(@ModelAttribute("bindUserObject") Usuario usuario) {
         userService.save(usuario);
-        return "user-register";
+        return "user-registerTilesDefinition";
     }
 
 }
