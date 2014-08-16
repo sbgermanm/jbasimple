@@ -15,13 +15,19 @@
         <form-login login-page="/login.html" />
         <logout logout-url="/logout" />
     </http>
-
-    
+   
     <authentication-manager>
         <authentication-provider>
-            <user-service>
+            <jdbc-user-service data-source-ref="miBaseDePatos" 
+                               authorities-by-username-query="select Usuario.name, Role.name from Usuario
+                                                              join Usuario_Role on Usuario.id = Usuario_Role.usuarios.id
+                                                              join Role on Usuario_Role.roles_id = Role.id
+                                                              where Usuario.name = ?" 
+                               users-by-username-query="Select name, password, 1 from Usuario where name = ?" />
+
+<!--            <user-service>
                 <user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" /> 
-            </user-service>
+            </user-service>-->
         </authentication-provider>
     </authentication-manager>
 
