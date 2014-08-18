@@ -49,12 +49,23 @@ public class DataBaseInitializer {
         Role role2 = new Role("PUTO_AMO");
         roleRepository.save(role2);
 
+        Role role3 = new Role("ROLE_ADMIN");
+        roleRepository.save(role3);
+
         List<Role> misRoles = new ArrayList<Role>();
         misRoles.add(role1);
         misRoles.add(role2);
-        Usuario usuario = new Usuario("Yo", misRoles);
+        misRoles.add(role3);
+        Usuario usuario = new Usuario("yo", "miclave", misRoles);
         usuarioRepository.save(usuario);
 
+        List<Role> misRoles2 = new ArrayList<Role>();
+        misRoles2.add(role3);
+        Usuario usuario2 = new Usuario("admin", "admin", misRoles2);
+        usuarioRepository.save(usuario2);
+
+        
+        
         Blog blog = new Blog("JavavidBlog", "http://feeds.feedburner.com/javavids?format=xml", usuario);
         blogRepository.save(blog);
 
