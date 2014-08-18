@@ -28,8 +28,8 @@
     
     <jpa:repositories base-package="com.sebas.jbasample.repository" entity-manager-factory-ref="miEntityManager" transaction-manager-ref="transactionManager"/>
     
-      <!--<import resource="database-dev.xml" />-->
-      <import resource="database-prod.xml" />
+      <import resource="database-dev.xml" />
+      <!--<import resource="database-prod.xml" />-->
 
     
     <import resource="security.xml" />

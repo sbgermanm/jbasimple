@@ -20,7 +20,7 @@
         <authentication-provider>
             <jdbc-user-service data-source-ref="dataSource" 
                                authorities-by-username-query="select Usuario.name, Role.name from Usuario
-                                                              join Usuario_Role on Usuario.id = Usuario_Role.usuarios.id
+                                                              join Usuario_Role on Usuario.id = Usuario_Role.usuarios_id
                                                               join Role on Usuario_Role.roles_id = Role.id
                                                               where Usuario.name = ?" 
                                users-by-username-query="Select name, password, 1 from Usuario where name = ?" />
