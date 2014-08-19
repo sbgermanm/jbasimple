@@ -19,6 +19,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -56,16 +57,16 @@ public class DataBaseInitializer {
         misRoles.add(role1);
         misRoles.add(role2);
         misRoles.add(role3);
-        Usuario usuario = new Usuario("yo", "miclave", misRoles);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        Usuario usuario = new Usuario("Yo", encoder.encode("miclave"), misRoles);
         usuarioRepository.save(usuario);
 
         List<Role> misRoles2 = new ArrayList<Role>();
         misRoles2.add(role3);
-        Usuario usuario2 = new Usuario("admin", "admin", misRoles2);
+        Usuario usuario2 = new Usuario("admin", encoder.encode("admin"), misRoles2);
         usuarioRepository.save(usuario2);
 
-        
-        
         Blog blog = new Blog("JavavidBlog", "http://feeds.feedburner.com/javavids?format=xml", usuario);
         blogRepository.save(blog);
 
@@ -78,49 +79,48 @@ public class DataBaseInitializer {
         int cont = 3;
         Item itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
         itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
-        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
-        itemRepository.save(itemTemp);
-        
+
         itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
         itemRepository.save(itemTemp);
 
-        
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
+        itemTemp = new Item("Articulo" + cont++, new Date(), blog, "www.javavids.com");
+        itemRepository.save(itemTemp);
+
     }
 }
