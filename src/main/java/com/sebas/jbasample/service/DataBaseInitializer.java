@@ -60,11 +60,13 @@ public class DataBaseInitializer {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         Usuario usuario = new Usuario("Yo", encoder.encode("miclave"), misRoles);
+        usuario.setEnabled(true);
         usuarioRepository.save(usuario);
 
         List<Role> misRoles2 = new ArrayList<Role>();
         misRoles2.add(role3);
         Usuario usuario2 = new Usuario("admin", encoder.encode("admin"), misRoles2);
+        usuario2.setEnabled(true);
         usuarioRepository.save(usuario2);
 
         Blog blog = new Blog("JavavidBlog", "http://feeds.feedburner.com/javavids?format=xml", usuario);
