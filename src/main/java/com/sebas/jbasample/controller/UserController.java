@@ -51,7 +51,7 @@ public class UserController {
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String doRegister(@ModelAttribute("bindUserObject") Usuario usuario) {
         userService.save(usuario);
-        return "user-registerTilesDefinition";
+        return "redirect:/register.html?success=true";
     }
 
 }
