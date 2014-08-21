@@ -64,6 +64,8 @@ public class DataBaseInitializer {
         usuarioRepository.save(usuario);
 
         List<Role> misRoles2 = new ArrayList<Role>();
+        misRoles2.add(role1);
+        misRoles2.add(role2);
         misRoles2.add(role3);
         Usuario usuario2 = new Usuario("admin", encoder.encode("admin"), misRoles2);
         usuario2.setEnabled(true);

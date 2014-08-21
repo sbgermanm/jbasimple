@@ -53,6 +53,11 @@ public class UserService {
     @Transactional
     public Usuario findOneWithBlogsAndItems(int id) {
         Usuario usuario = usuarioRepository.findOne(id);
+        return findOneWithBlogsAndItems(usuario);
+    }
+
+    @Transactional
+    public Usuario findOneWithBlogsAndItems(Usuario usuario) {
         List<Blog> blogs = blogRepository.findByUsuario(usuario);
         for (Blog blog : blogs) {
             List<Item> articulos = itemRepository.findByBlog(blog, new PageRequest(0, 10, Sort.Direction.DESC, "publishDate"));
@@ -74,4 +79,10 @@ public class UserService {
         usuarioRepository.save(usuario);
     }
 
+    public Usuario findOneWithBlogsAndItems(String name) {
+        Usuario usuario = usuarioRepository.findByName(name);
+        return findOneWithBlogsAndItems(usuario);
+    }
+
 }
+ 

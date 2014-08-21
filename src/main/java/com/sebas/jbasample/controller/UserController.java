@@ -7,6 +7,7 @@ package com.sebas.jbasample.controller;
 
 import com.sebas.jbasample.entity.Usuario;
 import com.sebas.jbasample.service.UserService;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,6 +53,13 @@ public class UserController {
     public String doRegister(@ModelAttribute("bindUserObject") Usuario usuario) {
         userService.save(usuario);
         return "redirect:/register.html?success=true";
+    }
+
+    @RequestMapping("/account")
+    public String account(Model modelo, Principal principal) {
+        String name = principal.getName();
+        modelo.addAttribute("usuario", userService.findOneWithBlogsAndItems(name));
+        return "cuentaUsuarioTilesDefinition";
     }
 
 }
