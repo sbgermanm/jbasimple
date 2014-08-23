@@ -5,7 +5,9 @@
  */
 package com.sebas.jbasample.controller;
 
+import com.sebas.jbasample.entity.Blog;
 import com.sebas.jbasample.entity.Usuario;
+import com.sebas.jbasample.service.BlogService;
 import com.sebas.jbasample.service.UserService;
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +30,17 @@ public class UserController {
         return new Usuario();
     }
     
+    @ModelAttribute("bindUserObject")
+    public Blog constructBlog(){
+        return new Blog();
+    }
+    
     
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private BlogService blogService;
 
     @RequestMapping("/users")
     public String getAllUsers(Model modelo) {
@@ -62,4 +72,12 @@ public class UserController {
         return "cuentaUsuarioTilesDefinition";
     }
 
+    @RequestMapping(value="/account", method = RequestMethod.POST)
+    public String saveBlog(@ModelAttribute("blogBindObject") Blog blog, Principal principal) {
+        String name = principal.getName();
+        blogService.save(blog, name);
+        return "redirect:/account.html";
+    }
+
+    
 }
