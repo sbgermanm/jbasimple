@@ -12,9 +12,6 @@ $(document).ready(function() {
       $('.nav-tabs a:first').tab('show'); // Select first tab
 //      $('#BlogsTabs a:first').tab('show'); // Select first tab
 
-
-
-
 });
 </script>
 
