@@ -30,7 +30,7 @@ public class UserController {
         return new Usuario();
     }
     
-    @ModelAttribute("bindUserObject")
+    @ModelAttribute("blogBindObject")
     public Blog constructBlog(){
         return new Blog();
     }

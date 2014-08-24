@@ -31,7 +31,7 @@ public class BlogService {
 
     public void save(Blog blog, String name) {
         Usuario usuario = usuarioRepository.findByName(name);
-        blog.setName(name);
+        blog.setUsuario(usuario);
         blogRepository.save(blog);
     
     }
