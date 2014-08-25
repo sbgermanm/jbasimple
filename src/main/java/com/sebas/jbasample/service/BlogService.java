@@ -36,6 +36,10 @@ public class BlogService {
     
     }
 
+    public void delete(int id) {
+        blogRepository.delete(id);
+    }
+
     
 }
  

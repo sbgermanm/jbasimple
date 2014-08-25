@@ -30,7 +30,11 @@ $(document).ready(function() {
 <div class="tab-content"> 
     <c:forEach items="${usuario.blogs}" var ="blog">
           <div class="tab-pane" id="blog_${blog.id}">
-
+            <h2>${blog.name}</h2>
+            <a href="<spring:url value="/blog/remove/${blog.id}.html"  />" class="btn btn-danger" >Borrar Blog</a>
+            <br /><br />
+            <p>${blog.url}</p>
+            
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                     <tr>
