@@ -3,7 +3,7 @@
 
 <%@include file="../layout/taglibs.jsp" %>
 
-<h1>${usuario.name}</h1>
+<h1><c:out value="${usuario.name}" /></h1>
 
 <%@include file="detalleUsuario-addBlog.jsp" %>
 
@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 <ul class="nav nav-tabs" role="tablist" id="BlogsTabs"> 
     <c:forEach items="${usuario.blogs}" var ="blog">
-        <li><a href="#blog_${blog.id}" role="tab" data-toggle="tab">${blog.name}</a></li>
+        <li><a href="#blog_${blog.id}" role="tab" data-toggle="tab"><c:out value="${blog.name}" /></a></li>
     </c:forEach>
 </ul> 
 
@@ -37,10 +37,10 @@ $(document).ready(function() {
 <div class="tab-content"> 
     <c:forEach items="${usuario.blogs}" var ="blog">
           <div class="tab-pane" id="blog_${blog.id}">
-            <h2>${blog.name}</h2>
+            <h2><c:out value="${blog.name}" /></h2>
             <a href="<spring:url value="/blog/remove/${blog.id}.html"  />" class="btn btn-danger lanzarConfirmacion" >Borrar Blog</a>
             <br /><br />
-            <p>${blog.url}</p>
+            <p><c:out value="${blog.url}" /></p>
             
             <table class="table table-bordered table-hover table-striped">
                 <thead>
@@ -53,9 +53,9 @@ $(document).ready(function() {
                 <tbody>
                     <c:forEach items="${blog.items}" var="articulo">
                         <tr>
-                            <td>${articulo.title}</td>
-                            <td>${articulo.link}</td>
-                            <td>${articulo.publishDate}</td>
+                            <td><c:out value="${articulo.title}" /></td>
+                            <td><c:out value="${articulo.link}"/></td>
+                            <td><c:out value="${articulo.publishDate}" /></td>
                         </tr>
                     </c:forEach>
                 </tbody>
