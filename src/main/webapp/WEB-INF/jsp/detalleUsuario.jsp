@@ -11,6 +11,13 @@
 $(document).ready(function() {
       $('.nav-tabs a:first').tab('show'); // Select first tab
 //      $('#BlogsTabs a:first').tab('show'); // Select first tab
+      $(".lanzarConfirmacion").click(function (e){
+          e.preventDefault();
+          $("#confirmationDLG .confirmationDLGOK").attr("href", $(this).attr("href"));
+          $("#confirmationDLG #myModalLabel").html("Eliminar Blog");
+          $("#confirmationDLG .modal-body").html("¿esta seguro de eliminar el blog?");
+          $("#confirmationDLG").modal();
+      })
 
 });
 </script>
@@ -31,7 +38,7 @@ $(document).ready(function() {
     <c:forEach items="${usuario.blogs}" var ="blog">
           <div class="tab-pane" id="blog_${blog.id}">
             <h2>${blog.name}</h2>
-            <a href="<spring:url value="/blog/remove/${blog.id}.html"  />" class="btn btn-danger" >Borrar Blog</a>
+            <a href="<spring:url value="/blog/remove/${blog.id}.html"  />" class="btn btn-danger lanzarConfirmacion" >Borrar Blog</a>
             <br /><br />
             <p>${blog.url}</p>
             
@@ -60,3 +67,4 @@ $(document).ready(function() {
     </c:forEach>         
 </div>
 
+<%@include file="confirmationDLG.jsp" %>
