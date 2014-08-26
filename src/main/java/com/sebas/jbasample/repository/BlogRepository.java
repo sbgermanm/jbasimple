@@ -17,6 +17,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface BlogRepository extends JpaRepository<Blog, Integer>{
 
     public List<Blog> findByUsuario(Usuario usuario);
+
     
     
 }
