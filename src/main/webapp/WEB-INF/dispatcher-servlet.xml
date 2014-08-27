@@ -4,15 +4,20 @@
        xmlns:context="http://www.springframework.org/schema/context"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
- http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+" 
+ 
+       xmlns:mvc="http://www.springframework.org/schema/mvc">
 
     <context:component-scan base-package="com.sebas.jbasample.controller"/>
     
-    
+    <mvc:annotation-driven />   
+ 
     
     
     <bean id="tilesConfigurer"
-              class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+          class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
             <list>
                 <value>/WEB-INF/defs/general.xml</value>
@@ -21,9 +26,9 @@
     </bean>
 
     <bean id="viewResolver"
-              class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass"
-                          value="org.springframework.web.servlet.view.tiles3.TilesView" />
+                  value="org.springframework.web.servlet.view.tiles3.TilesView" />
     </bean>
 
 </beans>

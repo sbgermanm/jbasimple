@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.sebas.jbasample.entity;
 
 import java.io.Serializable;
@@ -16,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
 
 /**
  *
@@ -23,26 +24,33 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Size(min = 3, message = "El nombre debe tener 3 caracteres al menso")
     private String name;
+
+    @Size(min = 5, message = "La password debe tener 5 caracteres al menso")
     private String password;
+
+    @Size(min = 3, message = "El email debe tener 3 caracteres al menso")
+    @Email
     private String email;
     private boolean enabled;
-    
+
     @ManyToMany
     @JoinTable
     private List<Role> roles;
-    
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     private List<Blog> blogs;
 
     public Usuario() {
     }
 
-    
     public Usuario(String name, List<Role> roles) {
         this.name = name;
         this.roles = roles;
@@ -62,7 +70,6 @@ public class Usuario implements Serializable {
         this.enabled = enabled;
     }
 
-    
     public Integer getId() {
         return id;
     }
@@ -107,8 +114,6 @@ public class Usuario implements Serializable {
         this.blogs = blogs;
     }
 
-
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -133,5 +138,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "com.sebas.jbasample.controller.entity.Usuario[ id=" + id + " ]";
     }
-    
+
 }

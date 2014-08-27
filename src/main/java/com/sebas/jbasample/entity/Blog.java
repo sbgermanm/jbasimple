@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
 
 /**
  *
@@ -27,7 +29,12 @@ public class Blog implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
+    @Size(min = 3, message = "El nombre debe tener 3 caracteres al menso")
     private String name;
+
+    @Size(min = 3, message = "La url debe tener 3 caracteres al menso")
+    @URL(message = "URL malformer")
     private String url;
     
     @ManyToOne
