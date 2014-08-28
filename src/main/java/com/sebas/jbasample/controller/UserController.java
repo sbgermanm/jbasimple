@@ -44,31 +44,6 @@ public class UserController {
     @Autowired
     private BlogService blogService;
 
-    @RequestMapping("/users")
-    public String getAllUsers(Model modelo) {
-        modelo.addAttribute("listaDeUsuarios", userService.findAll());
-        return "listadoUsuarioTilesDefinition";
-    }
-
-    @RequestMapping("/users/{id}")
-    public String userDetail(Model modelo, @PathVariable int id) {
-        modelo.addAttribute("usuario", userService.findOneWithBlogsAndItems(id));
-        return "detalleUsuarioTilesDefinition";
-    }
-
-    @RequestMapping("/register")
-    public String showRegister() {
-        return "user-registerTilesDefinition";
-    }
-
-    @RequestMapping(value="/register", method = RequestMethod.POST)
-    public String doRegister(@Valid @ModelAttribute("bindUserObject") Usuario usuario, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
-            return showRegister();
-        }
-        userService.save(usuario);
-        return "redirect:/register.html?success=true";
-    }
 
     @RequestMapping("/account")
     public String account(Model modelo, Principal principal) {
@@ -94,9 +69,5 @@ public class UserController {
         return "redirect:/account.html";
     }
     
-    @RequestMapping("/users/borrar/{id}")
-    public String borrarUsuario(@PathVariable int id) {
-        userService.delete(id);
-        return "redirect:/users.html";
-    }
+
 }
