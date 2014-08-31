@@ -88,5 +88,9 @@ public class UserService {
         usuarioRepository.delete(id);
     }
 
+    public Usuario findByName(String nombre) {
+        return usuarioRepository.findByName(nombre);
+    }
+
 }
  

@@ -5,9 +5,11 @@
  */
 package com.sebas.jbasample.entity;
 
+import com.sebas.jbasample.annotations.NombreUsuarioUnico;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +33,8 @@ public class Usuario implements Serializable {
     private Integer id;
 
     @Size(min = 3, message = "El nombre debe tener 3 caracteres al menso")
+    @Column(unique = true)
+    @NombreUsuarioUnico(message = "El usuario ya existe")
     private String name;
 
     @Size(min = 5, message = "La password debe tener 5 caracteres al menso")
