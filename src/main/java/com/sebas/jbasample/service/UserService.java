@@ -88,7 +88,7 @@ public class UserService {
         usuarioRepository.delete(id);
     }
 
-    public Usuario findByName(String nombre) {
+    public Usuario findOne(String nombre) {
         return usuarioRepository.findByName(nombre);
     }
 
