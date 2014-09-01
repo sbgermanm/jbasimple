@@ -23,7 +23,7 @@ public class ValidadorNombreUsuarioUnico implements ConstraintValidator<NombreUs
 
     @Override
     public boolean isValid(String nombre, ConstraintValidatorContext cvc) {
-//        return usuarioRepository.findOne(nombre) == null;
+//        return usuarioRepository.findByName(nombre) == null;
         if (null == userService){
             return true;
         }
