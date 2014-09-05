@@ -9,6 +9,7 @@ package com.sebas.jbasample.entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,6 +36,7 @@ public class Blog implements Serializable {
 
     @Size(min = 3, message = "La url debe tener 3 caracteres al menso")
     @URL(message = "URL malformer")
+    @Column(length = 1000)
     private String url;
     
     @ManyToOne

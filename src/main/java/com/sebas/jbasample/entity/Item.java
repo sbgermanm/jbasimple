@@ -13,7 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import org.hibernate.annotations.Type;
 
 /**
  *
@@ -26,12 +28,19 @@ public class Item implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
+    @Lob
+    @Type(type="org.hibernate.type.StringClobType")
+    @Column(length = Integer.MAX_VALUE)
     private String descripcion;
+
+    @Column(length = 1000)
     private String link;
+    @Column(length = 1000)
     private String title;
     @Column(name = "publish_date")
     private Date publishDate;
-    
+
     @ManyToOne
     @JoinColumn(name = "blog_id")
     private Blog blog;
@@ -46,9 +55,6 @@ public class Item implements Serializable {
         this.link = link;
     }
 
-    
-    
-    
     public String getDescripcion() {
         return descripcion;
     }
@@ -88,10 +94,7 @@ public class Item implements Serializable {
     public void setBlog(Blog blog) {
         this.blog = blog;
     }
-    
 
-    
-    
     public Integer getId() {
         return id;
     }
