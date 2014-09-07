@@ -6,7 +6,10 @@
 
 package com.sebas.jbasample.controller;
 
+import com.sebas.jbasample.service.ItemsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -17,9 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexController  {
+    
+    @Autowired
+    ItemsService itemsService;
+    
     @RequestMapping("/index")
-    public String index()
+    public String index(Model modelo)
     {
+        modelo.addAttribute("items", itemsService.findAll());
         return "index"; 
     }
 }
